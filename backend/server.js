@@ -12,6 +12,7 @@ const purchaseRequisitionRoutes = require("./routes/purchaseRequisitionRoutes");
 const purchaseOrderRoutes = require("./routes/purchaseOrderRoutes");
 const goodsReceiptRoutes = require("./routes/goodsReceiptRoutes");
 const bomRoutes = require("./routes/bomRoutes");
+const productionOrderRoutes = require("./routes/productionOrderRoutes");
 // As you build the remaining modules, add their routes here the same way:
 // const supplierRoutes = require("./routes/supplierRoutes");
 // const inventoryRoutes = require("./routes/inventoryRoutes");
@@ -48,7 +49,7 @@ app.use("/api/goods-receipts", goodsReceiptRoutes);
 // app.use("/api/boms", bomRoutes);
 app.use("/api/boms", bomRoutes);
 // app.use("/api/production-orders", productionOrderRoutes);
-
+app.use("/api/production-orders", productionOrderRoutes);
 // Basic error handler (catches thrown errors from async routes not already handled)
 app.use((err, req, res, next) => {
   console.error(err.stack);
