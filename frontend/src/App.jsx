@@ -3,6 +3,7 @@ import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Materials from "./pages/Materials";
 import ComingSoon from "./pages/ComingSoon";
@@ -14,12 +15,15 @@ import GoodsReceipts from "./pages/GoodsReceipts";
 import BOMs from "./pages/BOMs";
 import ProductionOrders from "./pages/ProductionOrders";
 import Reports from "./pages/Reports";
+
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
 
           <Route
             path="/"

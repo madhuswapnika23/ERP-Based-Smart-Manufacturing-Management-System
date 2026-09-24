@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
@@ -25,7 +25,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-100">
+    <div className="min-h-screen flex items-center justify-center bg-slate-100 px-4">
       <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-sm">
         <h1 className="text-xl font-bold text-slate-800 mb-1">ERP Manufacturing</h1>
         <p className="text-sm text-slate-500 mb-6">Sign in to continue</p>
@@ -65,9 +65,17 @@ const Login = () => {
             {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
+
+        <div className="mt-6 text-center text-sm text-slate-600">
+          Don't have an account?{" "}
+          <Link to="/register" className="text-primary-600 font-medium hover:underline">
+            Sign Up
+          </Link>
+        </div>
       </div>
     </div>
   );
 };
+
 
 export default Login;
