@@ -38,9 +38,6 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Connect to DB on startup (and reuse connection on serverless warm invocations)
-connectDB().catch((err) => console.error("DB init error:", err.message));
-
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "ERP Smart Manufacturing Backend is running", timestamp: new Date().toISOString() });
 });
