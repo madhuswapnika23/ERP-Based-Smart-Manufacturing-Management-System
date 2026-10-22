@@ -15,11 +15,31 @@ const goodsReceiptRoutes = require("./routes/goodsReceiptRoutes");
 const bomRoutes = require("./routes/bomRoutes");
 const productionOrderRoutes = require("./routes/productionOrderRoutes");
 
-connectDB();
-
 const app = express();
-app.use(cors());
+
+// CORS: allow Vercel production domain, Vercel preview URLs, and local dev
+const allowedOrigins = [
+  "https://erp-smart-manufacturing-system.vercel.app",
+  /https:\/\/erp-smart-manufacturing.*\.vercel\.app/,  // preview deployments
+  "http://localhost:5173",
+  "http://localhost:3000",
+];
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (e.g. server-to-server, Postman)
+    if (!origin) return callback(null, true);
+    const allowed = allowedOrigins.some((o) =>
+      typeof o === "string" ? o === origin : o.test(origin)
+    );
+    if (allowed) return callback(null, true);
+    callback(new Error(`CORS: origin '${origin}' not allowed`));
+  },
+  credentials: true,
+}));
 app.use(express.json());
+
+// Connect to DB on startup (and reuse connection on serverless warm invocations)
+connectDB().catch((err) => console.error("DB init error:", err.message));
 
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "ERP Smart Manufacturing Backend is running", timestamp: new Date().toISOString() });

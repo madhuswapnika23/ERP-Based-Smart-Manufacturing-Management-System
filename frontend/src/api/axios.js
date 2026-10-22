@@ -1,7 +1,9 @@
 import axios from "axios";
 
+// In production (Vercel), use relative /api path (handled by vercel.json rewrites).
+// In local dev, set VITE_API_URL=http://localhost:5000/api in frontend/.env.local
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: import.meta.env.VITE_API_URL || "/api",
 });
 
 // Automatically attach the JWT token (if present) to every request
