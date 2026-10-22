@@ -135,9 +135,3 @@ Default Demo Credentials:
 3. Set Build Command: `npm run postinstall && npm run build`
 4. Set Start Command: `npm start`
 5. Add `MONGO_URI` and `JWT_SECRET` environment variables.
-
----
-
-## 📜 License
-
-This project is open-source under the [ISC License](LICENSE).
